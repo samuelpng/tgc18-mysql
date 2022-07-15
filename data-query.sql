@@ -200,7 +200,7 @@ AS sub;
 SELECT * FROM orderdetails WHERE productCode NOT IN (SELECT distinct(productCode) from orderdetails)
 
 -- show all sales rep who made more than 10% of the payment amount
-SELECT employeeNumber, sum(amount) FROM employees JOIN customers
+SELECT employeeNumber, firstName, lastName, sum(amount) FROM employees JOIN customers
 	ON employees.employeeNumber = customers.salesRepEmployeeNumber
 	JOIN payments ON customers.customerNumber = payments.customerNumber
 	GROUP BY employees.employeeNumber, employees.firstName, employees.lastName
